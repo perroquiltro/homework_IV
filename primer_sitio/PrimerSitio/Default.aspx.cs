@@ -9,34 +9,37 @@ public partial class _Default : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        EscribeTextos();
+        MensajeInicial();
 
     }
     protected void btn_calcular_Click(object sender, EventArgs e)
     {
-        MuestraPesoIdeal(calculaPeso());
+        MostrarPesoIdeal(calcularPesoIdeal(Convert.ToInt16(CapturaEdad())));
     }
 
-    int calculaPeso(){
-        int edad1 = Convert.ToInt16(CapturaTexto());
-        int pesoIdeal = edad1*2+8;
+    int calcularPesoIdeal(int edad){
+        int pesoIdeal = edad*2+8;
          return pesoIdeal;
     }
 
-    void MuestraPesoIdeal(int pesoideal) {
+    void MostrarPesoIdeal(int pesoideal) {
         lbl_pesoIdeal.Text = "El peso ideal del niño es: " + pesoideal;
     }
 
-    void EscribeTextos() {
+    void MensajeInicial() {
         lbl_mensaje.Text = "Peso Ideal de un niño/a";
-        lbl_edad.Text = "Ingrese la Edad:";
+        solicitarEdad();
         
     }
 
-    String CapturaTexto() {
-        string texto;
-        texto = txt_edad.Text;
-        return texto;
+    void solicitarEdad() {
+        lbl_edad.Text = "Ingrese la Edad: ";
+    }
+
+    String CapturaEdad() {
+        string edad;
+        edad = txt_edad.Text;
+        return edad;
     }
 
  
